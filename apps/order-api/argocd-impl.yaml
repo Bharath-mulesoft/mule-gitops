@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: order-api
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Bharath-mulesoft/mule-gitops
+    targetRevision: main
+    path: apps/order-api
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: mule-dev
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
