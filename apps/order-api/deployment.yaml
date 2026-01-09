@@ -20,8 +20,15 @@ spec:
           - sh
           - -c
           - |
-            curl -L -o /apps/order-api.jar \
-            https://github.com/Bharath-mulesoft/mulesoft-CI/releases/download/v1.0.5/order-api-1.0.0.jar
+            echo "Downloading Mule artifact..."
+            until curl -fL \
+              https://github.com/Bharath-mulesoft/mulesoft-CI/releases/download/v1.0.5/order-api-1.0.0.jar \
+              -o /apps/order-api.jar; do
+                echo "Download failed, retrying in 10s..."
+                sleep 10
+            done
+            echo "Artifact downloaded successfully"
+
         volumeMounts:
         - name: mule-apps
           mountPath: /apps
