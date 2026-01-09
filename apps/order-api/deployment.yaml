@@ -22,7 +22,7 @@ spec:
           - |
             echo "Downloading Mule artifact..."
             until curl -fL \
-              https://github.com/Bharath-mulesoft/mulesoft-CI/releases/download/v1.0.5/order-api-1.0.0.jar \
+              https://github.com/Bharath-mulesoft/mulesoft-CI/releases/download/v1.0.5/order-api-1.0.0-SNAPSHOT-mule-application.jar \
               -o /apps/order-api.jar; do
                 echo "Download failed, retrying in 10s..."
                 sleep 10
