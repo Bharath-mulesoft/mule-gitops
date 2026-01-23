@@ -36,6 +36,8 @@ spec:
       containers:
       - name: mule
         image: bharath2101/mule-runtime:v2
+        stdin: false
+        tty: false
         ports:
         - containerPort: 8083
         volumeMounts:
