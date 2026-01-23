@@ -4,7 +4,7 @@ metadata:
   name: order-api
   namespace: mule-dev
 spec:
-  replicas: 1   
+  replicas: 1
   selector:
     matchLabels:
       app: order-api
@@ -28,7 +28,6 @@ spec:
                 sleep 10
             done
             echo "Artifact downloaded successfully"
-
         volumeMounts:
         - name: mule-apps
           mountPath: /apps
@@ -36,10 +35,25 @@ spec:
       containers:
       - name: mule
         image: bharath2101/mule-runtime:v2
+
         stdin: false
         tty: false
+
+        env:
+        - name: JAVA_OPTS
+          value: "-Xms256m -Xmx512m -XX:MaxMetaspaceSize=256m -Djava.io.tmpdir=/tmp"
+
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "500m"
+          limits:
+            memory: "1Gi"
+            cpu: "1"
+
         ports:
         - containerPort: 8083
+
         volumeMounts:
         - name: mule-apps
           mountPath: /opt/mule/apps
