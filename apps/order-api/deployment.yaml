@@ -34,7 +34,7 @@ spec:
 
       containers:
       - name: mule
-        image: bharath2101/mule-runtime:v4
+        image: bharath2101/mule-runtime:v1
 
         stdin: false
         tty: false
