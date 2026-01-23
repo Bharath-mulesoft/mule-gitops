@@ -22,7 +22,7 @@ spec:
           - |
             echo "Downloading Mule artifact..."
             until curl -fL \
-              https://github.com/Bharath-mulesoft/mulesoft-CI/releases/download/v1.0.5/order-api-1.0.0-SNAPSHOT-mule-application.jar \
+              https://github.com/Bharath-mulesoft/mulesoft-CI/releases/download/v1.0.6/order-api-1.0.0-SNAPSHOT-mule-application.jar \
               -o /apps/order-api.jar; do
                 echo "Download failed, retrying in 10s..."
                 sleep 10
@@ -35,9 +35,9 @@ spec:
 
       containers:
       - name: mule
-        image: bharath2101/mule-runtime:v1
+        image: bharath2101/mule-runtime:v2
         ports:
-        - containerPort: 8082
+        - containerPort: 8083
         volumeMounts:
         - name: mule-apps
           mountPath: /opt/mule/apps
