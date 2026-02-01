@@ -9,7 +9,7 @@ spec:
   - host: order.local
     http:
       paths:
-      - path: /
+      - path: /api/test
         pathType: Prefix
         backend:
           service:
